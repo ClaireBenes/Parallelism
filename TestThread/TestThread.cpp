@@ -1,8 +1,14 @@
 #include <iostream>
 #include <thread>
 
+#include <exception>
+#include <memory>
+#include <mutex>
+
 using std::cout;
 using std::endl;
+
+std::mutex m;
 
 void sayHello() 
 {
@@ -32,49 +38,128 @@ float* multMatrices(float mat1[4], float mat2[4])
 	return newMat;
 }
 
+void printEven(int& number)
+{
+	while (true)
+	{
+		m.lock();
+
+		if (number > 1000)
+		{
+			m.unlock();
+			break;
+		}
+
+		if (number % 2 == 0)
+		{
+			printf("Even: %d\n", number);
+			++number;
+		}
+
+		m.unlock();
+		std::this_thread::yield(); 
+	}
+}
+
+void printOdd(int& number)
+{
+	while (true)
+	{
+		m.lock();
+
+		if (number > 1000)
+		{
+			m.unlock();
+			break;
+		}
+
+		if (number % 2 != 0)
+		{
+			printf("Odd: %d\n", number);
+			++number;
+		}
+
+		m.unlock();
+		std::this_thread::yield();
+	}
+}
+
 int main() 
 {
+	// *************** PRINT HELLO WORD ***************
 	//std::thread t1(sayHello);
 	//std::thread t2(sayHello);
 
 	//t1.join();
 	//t2.join();
 
-	float mat1[4] = { 1, 1, 2, 2 };
-	float mat2[4] = { 2, 2, 1, 1 };
-	float mat3[4];
+	//float mat1[4] = { 1, 1, 2, 2 };
+	//float mat2[4] = { 2, 2, 1, 1 };
+	//float mat3[4];
 
 	//float* newMatrice = multMatrices(mat1, mat2);
+	// *************** PRINT HELLO WORD ***************
 
-	std::thread Val1([&]()
-		{
-			(ComputeMatriceValue(mat3[0], mat1[0], mat2[0], mat1[1], mat2[2]));
-		}		
-	);
-	std::thread Val2([&]()
-		{
-			(ComputeMatriceValue(mat3[1], mat1[0], mat2[1], mat1[1], mat2[3]));
-		}
-	);
-	std::thread Val3([&]()
-		{
-			(ComputeMatriceValue(mat3[2], mat1[2], mat2[0], mat1[3], mat2[2]));
-		}
-	);
-	std::thread Val4([&]()
-		{
-			(ComputeMatriceValue(mat3[3], mat1[1], mat2[2], mat1[3], mat2[3]));
-		}
-	);
+	// *************** MULTIPLY MATRICES ***************
+	//float mat1[4] = { 1, 1, 2, 2 };
+	//float mat2[4] = { 2, 2, 1, 1 };
+	//float mat3[4];
 
-	Val1.join();
-	Val2.join();
-	Val3.join();
-	Val4.join();
+	//std::thread Val1([&]()
+	//	{
+	//		(ComputeMatriceValue(mat3[0], mat1[0], mat2[0], mat1[1], mat2[2]));
+	//	}		
+	//);
+	//std::thread Val2([&]()
+	//	{
+	//		(ComputeMatriceValue(mat3[1], mat1[0], mat2[1], mat1[1], mat2[3]));
+	//	}
+	//);
+	//std::thread Val3([&]()
+	//	{
+	//		(ComputeMatriceValue(mat3[2], mat1[2], mat2[0], mat1[3], mat2[2]));
+	//	}
+	//);
+	//std::thread Val4([&]()
+	//	{
+	//		(ComputeMatriceValue(mat3[3], mat1[1], mat2[2], mat1[3], mat2[3]));
+	//	}
+	//);
 
+	//Val1.join();
+	//Val2.join();
+	//Val3.join();
+	//Val4.join();
+
+	//
+	//float mat[4] = { mat3[0], mat3[1], mat3[2], mat3[3] };
+	//toString(mat);
+	// *************** MULTIPLY MATRICES ***************
+
+	int number = 0; 
+	std::thread t1([&]() 
+		{ 
+			printEven(number); 
+			printf("Even : %i\n", number);
+		}
+	); 
 	
-	float mat[4] = { mat3[0], mat3[1], mat3[2], mat3[3] };
-	toString(mat);
+	std::thread t2([&]() 
+		{ 
+			printOdd(number);
+			printf("Odd : %i\n", number); 
+		}
+	); 
+	
+	t1.join();
+	t2.join();
+
+
+	//while (number < 100) 
+	//{
+	//	t1.join();
+	//	t2.join();
+	//}
 
 	return 0;
 }
