@@ -9,6 +9,7 @@ using std::cout;
 using std::endl;
 
 std::mutex m;
+std::condition_variable cv;
 
 void sayHello() 
 {
@@ -42,22 +43,17 @@ void printEven(int& number)
 {
 	while (true)
 	{
-		m.lock();
+		std::unique_lock<std::mutex> lock(m);
+
+		cv.wait(lock, [&number] { return number % 2 == 0 || number > 1000; });
 
 		if (number > 1000)
-		{
-			m.unlock();
 			break;
-		}
 
-		if (number % 2 == 0)
-		{
-			printf("Even: %d\n", number);
-			++number;
-		}
+		printf("Even: %d\n", number);
+		++number;
 
-		m.unlock();
-		std::this_thread::yield(); 
+		cv.notify_one();
 	}
 }
 
@@ -65,22 +61,17 @@ void printOdd(int& number)
 {
 	while (true)
 	{
-		m.lock();
+		std::unique_lock<std::mutex> lock(m);
+
+		cv.wait(lock, [&number] { return number % 2 != 0 || number > 1000; });
 
 		if (number > 1000)
-		{
-			m.unlock();
 			break;
-		}
 
-		if (number % 2 != 0)
-		{
-			printf("Odd: %d\n", number);
-			++number;
-		}
+		printf("Odd: %d\n", number);
+		++number;
 
-		m.unlock();
-		std::this_thread::yield();
+		cv.notify_one();
 	}
 }
 
@@ -136,30 +127,13 @@ int main()
 	//toString(mat);
 	// *************** MULTIPLY MATRICES ***************
 
-	int number = 0; 
-	std::thread t1([&]() 
-		{ 
-			printEven(number); 
-			printf("Even : %i\n", number);
-		}
-	); 
-	
-	std::thread t2([&]() 
-		{ 
-			printOdd(number);
-			printf("Odd : %i\n", number); 
-		}
-	); 
-	
+	int number = 0;
+
+	std::thread t1{ printEven , std::ref(number) };
+	std::thread t2{ printOdd , std::ref(number) };
+
 	t1.join();
 	t2.join();
-
-
-	//while (number < 100) 
-	//{
-	//	t1.join();
-	//	t2.join();
-	//}
 
 	return 0;
 }
