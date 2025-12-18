@@ -158,7 +158,6 @@ float SumWithMutex(const std::vector<float>& elements, int m)
 }
 
 
-
 int main() 
 {
 	// *************** PRINT HELLO WORD ***************
