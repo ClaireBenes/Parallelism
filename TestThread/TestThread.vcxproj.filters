@@ -18,9 +18,6 @@
     <ClCompile Include="Source\Exercises\EvenOddPrinterExercise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Exercises\HelloWordExercise.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Exercises\MatrixMultiplicationExercise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -51,9 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Exercises\EvenOddPrinterExercise.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Exercises\HelloWordExercise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Exercises\MatrixMultiplicationExercise.h">

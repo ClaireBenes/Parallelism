@@ -9,7 +9,6 @@ struct Order
     std::promise<void>* mealPromise = nullptr;
 };
 
-
 struct IngredientRequest
 {
     int ingredientId;

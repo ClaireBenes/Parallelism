@@ -1,4 +1,3 @@
-#include "Exercises/HelloWordExercise.h"
 #include "Exercises/MatrixMultiplicationExercise.h"
 #include "Exercises/EvenOddPrinterExercise.h"
 #include "Exercises/SumAlgorithmsExercise.h"
@@ -12,11 +11,6 @@ int main()
     // Even / Odd threads
     printf("Even Odd Printer Exercise \n");
     EvenOddPrinterExercise::Run();
-    printf("\n----------------\n\n");
-
-    // Hello World
-    printf("Hello Word Exercise : \n");
-    HelloWordExercise::SayHello();
     printf("\n----------------\n\n");
 
     // Matrix multiplication

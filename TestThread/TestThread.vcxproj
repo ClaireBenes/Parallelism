@@ -125,7 +125,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Exercises\EvenOddPrinterExercise.cpp" />
-    <ClCompile Include="Source\Exercises\HelloWordExercise.cpp" />
     <ClCompile Include="Source\Exercises\MatrixMultiplicationExercise.cpp" />
     <ClCompile Include="Source\Exercises\SumAlgorithmsExercise.cpp" />
     <ClCompile Include="Source\Main.cpp" />
@@ -142,7 +141,6 @@
     <ClInclude Include="Source\Restaurant\Customer.h" />
     <ClInclude Include="Source\Restaurant\MessageQueue.h" />
     <ClInclude Include="Source\Exercises\EvenOddPrinterExercise.h" />
-    <ClInclude Include="Source\Exercises\HelloWordExercise.h" />
     <ClInclude Include="Source\Exercises\MatrixMultiplicationExercise.h" />
     <ClInclude Include="Source\Exercises\SumAlgorithmsExercise.h" />
     <ClInclude Include="Source\Restaurant\Messages.h" />
