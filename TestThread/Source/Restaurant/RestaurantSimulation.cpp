@@ -9,9 +9,12 @@
 
 #include <vector>
 #include <thread>
+#include <random>
 
-RestaurantSimulation::RestaurantSimulation(int numCustomers, int maxTables)
-    : numCustomers(numCustomers), tables(maxTables)
+RestaurantSimulation::RestaurantSimulation(int maxTables, int numCustomers,
+    int numWaiters, int numCookers, int numChiefs)
+    : tables(maxTables), numCustomers(numCustomers),
+    numWaiters(numWaiters), numCookers(numCookers), numChiefs(numChiefs)
 {
 }
 
@@ -26,36 +29,60 @@ void RestaurantSimulation::Start()
     MessageQueue<MealReady> meals;
 
     // Actors
-    Waiter waiter(orders, ingredientRequests, meals);
-    Cooker cooker(ingredientRequests, preparedIngredients);
-    Chief chief(preparedIngredients, meals);
+    std::vector<Waiter*> waiters;
+    std::vector<Cooker*> cookers;
+    std::vector<Chief*> chiefs;
+    std::vector<std::thread> threads;
 
-    // Threads
-    std::thread tWaiter(&Waiter::Run, &waiter);
-    std::thread tCooker(&Cooker::Run, &cooker);
-    std::thread tChief(&Chief::Run, &chief);
+    // Create waiters
+    for (int i = 0; i < numWaiters; ++i)
+    {
+        Waiter* w = new Waiter(i + 1, orders, ingredientRequests, meals);
+        waiters.push_back(w);
+        threads.emplace_back(&Waiter::Run, w);
+    }
 
+    // Create cookers
+    for (int i = 0; i < numCookers; ++i)
+    {
+        Cooker* c = new Cooker(i + 1, ingredientRequests, preparedIngredients);
+        cookers.push_back(c);
+        threads.emplace_back(&Cooker::Run, c);
+    }
+
+    // Create chiefs
+    for (int i = 0; i < numChiefs; ++i)
+    {
+        Chief* ch = new Chief(i + 1, preparedIngredients, meals);
+        chiefs.push_back(ch);
+        threads.emplace_back(&Chief::Run, ch);
+    }
+
+    // Customers
     std::vector<std::thread> customerThreads;
     for (int i = 0; i < numCustomers; ++i)
     {
         Customer* c = new Customer(i + 1, orders);
         customerThreads.emplace_back(&Customer::Run, c, std::ref(tables));
 
-        // simulate random arrival
+        // slower random arrival
         std::this_thread::sleep_for(std::chrono::milliseconds(500 + rand() % 1000));
     }
 
+    // wait for customers
     for (auto& t : customerThreads)
     {
         t.join();
     }
 
-    // stop infinite actors
-    waiter.Stop();
-    cooker.Stop();
-    chief.Stop();
+    // stop all infinite actors
+    for (auto w : waiters) w->Stop();
+    for (auto c : cookers) c->Stop();
+    for (auto ch : chiefs) ch->Stop();
 
-    tWaiter.join();
-    tCooker.join();
-    tChief.join();
+    // join all threads
+    for (auto& t : threads)
+    {
+        t.join();
+    }
 }

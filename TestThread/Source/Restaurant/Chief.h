@@ -8,13 +8,15 @@
 class Chief
 {
 public:
-    Chief(MessageQueue<int>& ingredients,
+    Chief(int id, MessageQueue<int>& ingredients,
         MessageQueue<MealReady>& meals);
 
     void Run();
     void Stop();
 
 private:
+    int id;
+
     MessageQueue<int>& ingredientQueue;
     MessageQueue<MealReady>& mealQueue;
 

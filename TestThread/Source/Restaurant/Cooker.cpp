@@ -3,9 +3,9 @@
 #include <thread>
 #include <chrono>
 
-Cooker::Cooker(MessageQueue<IngredientRequest>& requests,
+Cooker::Cooker(int id, MessageQueue<IngredientRequest>& requests,
     MessageQueue<int>& preparedIngredients)
-    : requestQueue(requests), readyQueue(preparedIngredients), stopFlag(false)
+    : id(id), requestQueue(requests), readyQueue(preparedIngredients), stopFlag(false)
 {
 }
 
@@ -16,7 +16,8 @@ void Cooker::Run()
         if (!requestQueue.empty())
         {
             IngredientRequest req = requestQueue.pop();
-            printf("Cooker: preparing ingredient %d\n", req.ingredientId);
+            printf("Cooker %d: preparing ingredient %d\n", id, req.ingredientId);
+
             std::this_thread::sleep_for(std::chrono::milliseconds(500));
             readyQueue.push(req.ingredientId);
         }

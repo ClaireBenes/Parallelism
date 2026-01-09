@@ -8,13 +8,15 @@
 class Cooker
 {
 public:
-    Cooker(MessageQueue<IngredientRequest>& requests,
+    Cooker(int id, MessageQueue<IngredientRequest>& requests,
         MessageQueue<int>& preparedIngredients);
 
     void Run();
     void Stop();
 
 private:
+    int id;
+
     MessageQueue<IngredientRequest>& requestQueue;
     MessageQueue<int>& readyQueue;
 

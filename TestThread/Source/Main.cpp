@@ -46,7 +46,8 @@ int main()
 
     // Restaurant Simulation
     printf("Restaurant Simulation Exercise : \n");
-    RestaurantSimulation simulation(10, 3); // 10 customers, 3 tables
+    //  3 tables, 10 customers, 2 waiters, 2 cookers, 2 chiefs
+    RestaurantSimulation simulation(3, 10, 2, 2, 2);
     simulation.Start();
     printf("\n----------------\n\n");
 

@@ -35,6 +35,7 @@ void Customer::Run(TableManager& tables)
 
     printf("Customer %d: ordering ingredients [%d %d %d]\n",
         id, order.ingredients[0], order.ingredients[1], order.ingredients[2]);
+
     orderQueue.push(order);
 
     // Wait for meal delivery

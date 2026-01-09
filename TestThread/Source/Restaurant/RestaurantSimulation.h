@@ -5,11 +5,15 @@
 class RestaurantSimulation
 {
 public:
-    RestaurantSimulation(int numCustomers, int maxTables);
+    RestaurantSimulation(int maxTables, int numCustomers, int numWaiters, int numCookers, int numChiefs);
 
     void Start();
 
 private:
     int numCustomers;
+    int numWaiters;
+    int numCookers;
+    int numChiefs;
+
     TableManager tables;
 };
