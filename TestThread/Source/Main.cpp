@@ -9,6 +9,11 @@
 
 int main()
 {
+    // Even / Odd threads
+    printf("Even Odd Printer Exercise \n");
+    EvenOddPrinterExercise::Run();
+    printf("\n----------------\n\n");
+
     // Hello World
     printf("Hello Word Exercise : \n");
     HelloWordExercise::SayHello();
@@ -23,11 +28,6 @@ int main()
     MatrixMultiplicationExercise::Multiply(mat1, mat2, mat3);
     MatrixMultiplicationExercise::Print(mat3);
     printf("\n----------------\n\n");
-
-    // Even / Odd threads
-    //printf("Even Odd Printer Exercise \n");
-    //EvenOddPrinterExercise::Run();
-    //printf("\n----------------\n\n");
 
     // Sum algorithms
     printf("Sum Algorithms Exercise : \n");
