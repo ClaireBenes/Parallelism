@@ -15,33 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="Source\Exercises\EvenOddPrinterExercise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HelloWordExercise.cpp">
+    <ClCompile Include="Source\Exercises\HelloWordExercise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MatrixMultiplicationExercise.cpp">
+    <ClCompile Include="Source\Exercises\MatrixMultiplicationExercise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EvenOddPrinterExercise.cpp">
+    <ClCompile Include="Source\Exercises\SumAlgorithmsExercise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SumAlgorithmsExercise.cpp">
+    <ClCompile Include="Source\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HelloWordExercise.h">
+    <ClInclude Include="Source\Exercises\EvenOddPrinterExercise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MatrixMultiplicationExercise.h">
+    <ClInclude Include="Source\Exercises\HelloWordExercise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EvenOddPrinterExercise.h">
+    <ClInclude Include="Source\Exercises\MatrixMultiplicationExercise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SumAlgorithmsExercise.h">
+    <ClInclude Include="Source\Exercises\SumAlgorithmsExercise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

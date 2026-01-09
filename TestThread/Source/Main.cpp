@@ -1,7 +1,7 @@
-#include "HelloWordExercise.h"
-#include "MatrixMultiplicationExercise.h"
-#include "EvenOddPrinterExercise.h"
-#include "SumAlgorithmsExercise.h"
+#include "Exercises/HelloWordExercise.h"
+#include "Exercises/MatrixMultiplicationExercise.h"
+#include "Exercises/EvenOddPrinterExercise.h"
+#include "Exercises/SumAlgorithmsExercise.h"
 
 #include <vector>
 #include <cstdio>

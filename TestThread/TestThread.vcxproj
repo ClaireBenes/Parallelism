@@ -116,6 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -123,17 +124,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="EvenOddPrinterExercise.cpp" />
-    <ClCompile Include="HelloWordExercise.cpp" />
-    <ClCompile Include="MatrixMultiplicationExercise.cpp" />
-    <ClCompile Include="SumAlgorithmsExercise.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Source\Exercises\EvenOddPrinterExercise.cpp" />
+    <ClCompile Include="Source\Exercises\HelloWordExercise.cpp" />
+    <ClCompile Include="Source\Exercises\MatrixMultiplicationExercise.cpp" />
+    <ClCompile Include="Source\Exercises\SumAlgorithmsExercise.cpp" />
+    <ClCompile Include="Source\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EvenOddPrinterExercise.h" />
-    <ClInclude Include="HelloWordExercise.h" />
-    <ClInclude Include="MatrixMultiplicationExercise.h" />
-    <ClInclude Include="SumAlgorithmsExercise.h" />
+    <ClInclude Include="Source\Exercises\EvenOddPrinterExercise.h" />
+    <ClInclude Include="Source\Exercises\HelloWordExercise.h" />
+    <ClInclude Include="Source\Exercises\MatrixMultiplicationExercise.h" />
+    <ClInclude Include="Source\Exercises\SumAlgorithmsExercise.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
