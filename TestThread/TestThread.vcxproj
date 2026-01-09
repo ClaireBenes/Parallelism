@@ -123,7 +123,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EvenOddPrinter.cpp" />
+    <ClCompile Include="HelloWordExercise.cpp" />
+    <ClCompile Include="MatrixMultiplicationExercise.cpp" />
+    <ClCompile Include="SumAlgorithms.cpp" />
     <ClCompile Include="TestThread.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EvenOddPrinter.h" />
+    <ClInclude Include="HelloWordExercise.h" />
+    <ClInclude Include="MatrixMultiplicationExercise.h" />
+    <ClInclude Include="SumAlgorithms.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
