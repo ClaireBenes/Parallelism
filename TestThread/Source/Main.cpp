@@ -2,6 +2,7 @@
 #include "Exercises/MatrixMultiplicationExercise.h"
 #include "Exercises/EvenOddPrinterExercise.h"
 #include "Exercises/SumAlgorithmsExercise.h"
+#include "Restaurant/RestaurantSimulation.h"
 
 #include <vector>
 #include <cstdio>
@@ -41,6 +42,12 @@ int main()
 
     printf("Mutex sum: %.1f\n",
         SumAlgorithmsExercise::WithMutex(list, threads));
+    printf("\n----------------\n\n");
+
+    // Restaurant Simulation
+    printf("Restaurant Simulation Exercise : \n");
+    RestaurantSimulation simulation;
+    simulation.Start();
     printf("\n----------------\n\n");
 
     return 0;

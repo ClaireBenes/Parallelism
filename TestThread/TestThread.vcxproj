@@ -129,12 +129,24 @@
     <ClCompile Include="Source\Exercises\MatrixMultiplicationExercise.cpp" />
     <ClCompile Include="Source\Exercises\SumAlgorithmsExercise.cpp" />
     <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Restaurant\Chief.cpp" />
+    <ClCompile Include="Source\Restaurant\Cooker.cpp" />
+    <ClCompile Include="Source\Restaurant\Customer.cpp" />
+    <ClCompile Include="Source\Restaurant\RestaurantSimulation.cpp" />
+    <ClCompile Include="Source\Restaurant\Waiter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Restaurant\Chief.h" />
+    <ClInclude Include="Source\Restaurant\Cooker.h" />
+    <ClInclude Include="Source\Restaurant\Customer.h" />
+    <ClInclude Include="Source\Restaurant\MessageQueue.h" />
     <ClInclude Include="Source\Exercises\EvenOddPrinterExercise.h" />
     <ClInclude Include="Source\Exercises\HelloWordExercise.h" />
     <ClInclude Include="Source\Exercises\MatrixMultiplicationExercise.h" />
     <ClInclude Include="Source\Exercises\SumAlgorithmsExercise.h" />
+    <ClInclude Include="Source\Restaurant\Messages.h" />
+    <ClInclude Include="Source\Restaurant\RestaurantSimulation.h" />
+    <ClInclude Include="Source\Restaurant\Waiter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
