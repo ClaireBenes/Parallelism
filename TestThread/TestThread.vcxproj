@@ -133,6 +133,7 @@
     <ClCompile Include="Source\Restaurant\Cooker.cpp" />
     <ClCompile Include="Source\Restaurant\Customer.cpp" />
     <ClCompile Include="Source\Restaurant\RestaurantSimulation.cpp" />
+    <ClCompile Include="Source\Restaurant\TableManager.cpp" />
     <ClCompile Include="Source\Restaurant\Waiter.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +147,7 @@
     <ClInclude Include="Source\Exercises\SumAlgorithmsExercise.h" />
     <ClInclude Include="Source\Restaurant\Messages.h" />
     <ClInclude Include="Source\Restaurant\RestaurantSimulation.h" />
+    <ClInclude Include="Source\Restaurant\TableManager.h" />
     <ClInclude Include="Source\Restaurant\Waiter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
