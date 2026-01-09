@@ -5,30 +5,37 @@ Waiter::Waiter(MessageQueue<Order>& orders,
     MessageQueue<MealReady>& meals)
     : orderQueue(orders),
     ingredientQueue(ingredientRequests),
-    mealQueue(meals)
+    mealQueue(meals), stopFlag(false)
 {
 }
 
 void Waiter::Run()
 {
-    while (true)
+    while (!stopFlag)
     {
-        Order order = orderQueue.pop();
-
-        printf("Waiter: received order from customer %d\n", order.customerId);
-
-        for (int i = 0; i < 3; ++i)
+        if (!orderQueue.empty())
         {
-            ingredientQueue.push({ order.ingredients[i] });
+            Order order = orderQueue.pop();
+            printf("Waiter: received order from customer %d\n", order.customerId);
+
+            for (int i = 0; i < 3; ++i)
+                ingredientQueue.push({ order.ingredients[i] });
+
+            // wait for meal from Chief
+            mealQueue.pop();
+            printf("Waiter: delivering meal to customer %d\n", order.customerId);
+
+            if (order.mealPromise)
+                order.mealPromise->set_value();
         }
-
-        MealReady m = mealQueue.pop();
-        printf("Waiter: delivering meal to customer %d\n", m.customerId);
-
-        // signal the customer
-        if (order.mealPromise)
+        else
         {
-            order.mealPromise->set_value();
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
     }
+}
+
+void Waiter::Stop()
+{
+    stopFlag = true;
 }

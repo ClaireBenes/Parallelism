@@ -5,18 +5,31 @@
 
 Chief::Chief(MessageQueue<int>& ingredients,
     MessageQueue<MealReady>& meals)
-    : ingredientQueue(ingredients), mealQueue(meals)
+    : ingredientQueue(ingredients), mealQueue(meals), stopFlag(false)
 {
 }
 
 void Chief::Run()
 {
-    int i1 = ingredientQueue.pop();
-    int i2 = ingredientQueue.pop();
-    int i3 = ingredientQueue.pop();
+    while (!stopFlag)
+    {
+        if (ingredientQueue.empty())
+        {
+            std::this_thread::sleep_for(std::chrono::milliseconds(50));
+            continue;
+        }
 
-    printf("Chief: assembling meal [%d %d %d]\n", i1, i2, i3);
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        int i1 = ingredientQueue.pop();
+        int i2 = ingredientQueue.pop();
+        int i3 = ingredientQueue.pop();
 
-    mealQueue.push({ 1 });
+        printf("Chief: assembling meal [%d %d %d]\n", i1, i2, i3);
+        std::this_thread::sleep_for(std::chrono::milliseconds(800));
+        mealQueue.push({ 1 });
+    }
+}
+
+void Chief::Stop()
+{
+    stopFlag = true;
 }

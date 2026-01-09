@@ -42,7 +42,7 @@ void RestaurantSimulation::Start()
         customerThreads.emplace_back(&Customer::Run, c, std::ref(tables));
 
         // simulate random arrival
-        std::this_thread::sleep_for(std::chrono::milliseconds(rand() % 200));
+        std::this_thread::sleep_for(std::chrono::milliseconds(500 + rand() % 1000));
     }
 
     for (auto& t : customerThreads)
@@ -50,8 +50,12 @@ void RestaurantSimulation::Start()
         t.join();
     }
 
-    // Detach infinite-loop threads for simplicity
-    tWaiter.detach();
-    tCooker.detach();
-    tChief.detach();
+    // stop infinite actors
+    waiter.Stop();
+    cooker.Stop();
+    chief.Stop();
+
+    tWaiter.join();
+    tCooker.join();
+    tChief.join();
 }

@@ -27,6 +27,12 @@ public:
         return value;
     }
 
+    bool empty()
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        return queue.empty();
+    }
+
 private:
     std::queue<T> queue;
     std::mutex mutex;

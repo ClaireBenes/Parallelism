@@ -3,6 +3,8 @@
 #include "MessageQueue.h"
 #include "Messages.h"
 
+#include <atomic>
+
 class Chief
 {
 public:
@@ -10,8 +12,11 @@ public:
         MessageQueue<MealReady>& meals);
 
     void Run();
+    void Stop();
 
 private:
     MessageQueue<int>& ingredientQueue;
     MessageQueue<MealReady>& mealQueue;
+
+    std::atomic<bool> stopFlag;
 };
