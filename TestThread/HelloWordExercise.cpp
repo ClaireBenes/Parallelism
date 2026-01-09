@@ -3,5 +3,5 @@
 
 void HelloWordExercise::SayHello()
 {
-	std::cout << "Hello world\n" << std::endl;
+	std::cout << "Hello world" << std::endl;
 }

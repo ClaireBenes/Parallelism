@@ -1,11 +1,11 @@
-#include "SumAlgorithms.h"
+#include "SumAlgorithmsExercise.h"
 #include <thread>
 #include <mutex>
 
 static float globalSum;
 static std::mutex sumMutex;
 
-float SumAlgorithms::Sequential(const std::vector<float>& elements)
+float SumAlgorithmsExercise::Sequential(const std::vector<float>& elements)
 {
     float sum = 0;
     for (float v : elements)
@@ -16,7 +16,7 @@ float SumAlgorithms::Sequential(const std::vector<float>& elements)
     return sum;
 }
 
-float SumAlgorithms::ThreadLocal(const std::vector<float>& elements, int m)
+float SumAlgorithmsExercise::ThreadLocal(const std::vector<float>& elements, int m)
 {
     std::vector<std::thread> threads;
     std::vector<float> localSums(m, 0.0f);
@@ -47,7 +47,7 @@ float SumAlgorithms::ThreadLocal(const std::vector<float>& elements, int m)
     return total;
 }
 
-float SumAlgorithms::WithMutex(const std::vector<float>& elements, int m)
+float SumAlgorithmsExercise::WithMutex(const std::vector<float>& elements, int m)
 {
     globalSum = 0;
     std::vector<std::thread> threads;

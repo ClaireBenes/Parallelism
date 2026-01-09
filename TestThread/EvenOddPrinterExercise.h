@@ -3,7 +3,7 @@
 #include <mutex>
 #include <condition_variable>
 
-class EvenOddPrinter
+class EvenOddPrinterExercise
 {
 public:
     static void Run();

@@ -1,11 +1,11 @@
-#include "EvenOddPrinter.h"
+#include "EvenOddPrinterExercise.h"
 
 #include <thread>
 
-std::mutex EvenOddPrinter::m;
-std::condition_variable EvenOddPrinter::cv;
+std::mutex EvenOddPrinterExercise::m;
+std::condition_variable EvenOddPrinterExercise::cv;
 
-void EvenOddPrinter::PrintEven(int& number)
+void EvenOddPrinterExercise::PrintEven(int& number)
 {
     while (true)
     {
@@ -20,7 +20,7 @@ void EvenOddPrinter::PrintEven(int& number)
     }
 }
 
-void EvenOddPrinter::PrintOdd(int& number)
+void EvenOddPrinterExercise::PrintOdd(int& number)
 {
     while (true)
     {
@@ -35,7 +35,7 @@ void EvenOddPrinter::PrintOdd(int& number)
     }
 }
 
-void EvenOddPrinter::Run()
+void EvenOddPrinterExercise::Run()
 {
     int number = 0;
 

@@ -2,7 +2,7 @@
 
 #include <vector>
 
-class SumAlgorithms
+class SumAlgorithmsExercise
 {
 public:
     static float Sequential(const std::vector<float>& elements);

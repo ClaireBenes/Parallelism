@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TestThread.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HelloWordExercise.cpp">
@@ -24,10 +24,10 @@
     <ClCompile Include="MatrixMultiplicationExercise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EvenOddPrinter.cpp">
+    <ClCompile Include="EvenOddPrinterExercise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SumAlgorithms.cpp">
+    <ClCompile Include="SumAlgorithmsExercise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,10 +38,10 @@
     <ClInclude Include="MatrixMultiplicationExercise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EvenOddPrinter.h">
+    <ClInclude Include="EvenOddPrinterExercise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SumAlgorithms.h">
+    <ClInclude Include="SumAlgorithmsExercise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
